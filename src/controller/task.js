@@ -2,7 +2,7 @@ const {Task} = require ("../model");
 
 exports.getTask = async () =>{
     const listTask = await Task.findAll();
-    return[];
+    return[...listTask];
 }
 
 exports.createTask = async (body) => {

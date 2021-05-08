@@ -1,5 +1,5 @@
 const {Op} = require('sequelize');
-const { User } = require("../model");
+const { User, Task } = require("../model");
 
 
 exports.getUser = async (limit = 1, page =1, key ="") => {
@@ -11,7 +11,8 @@ exports.getUser = async (limit = 1, page =1, key ="") => {
         },
         {
             limit: Number(limit),
-            offset: Number((page - 1) * limit)
+            offset: Number((page - 1) * limit),
+            include:[{model: "task"}]
         });
     console.log(listUser);
     return listUser;
